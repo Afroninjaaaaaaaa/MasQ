@@ -79,6 +79,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ChangeFace.cs" />
+    <Compile Include="Assets\Scripts\GetText.cs" />
+    <Compile Include="Assets\Scripts\MoveBody.cs" />
+    <Compile Include="Assets\Scripts\RotateHead.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Day-Night Skyboxes\Textures\Readme for Assigning.txt" />
+    <None Include="Assets\Day-Night Skyboxes\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
