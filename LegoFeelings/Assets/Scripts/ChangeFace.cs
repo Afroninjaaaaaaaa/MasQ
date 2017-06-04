@@ -9,17 +9,31 @@ public class ChangeFace : MonoBehaviour
     Material[] eyesMats;
     Material[] mouthsMats;
     Material[] Skyboxes;
+    AudioClip[] mouthSounds;
     Shader DefaultShader;
     MeshRenderer eyesRenderer;
     MeshRenderer mouthRenderer;
+    AudioSource mouthAudio;
 
     private int tabIndex;
+    Dictionary<string, int[]> feelings;
 
 
-    void Start ()
-    {     
+    void Start()
+    {
         eyesRenderer = gameObject.transform.GetChild(1).gameObject.AddComponent<MeshRenderer>() as MeshRenderer;
         mouthRenderer = gameObject.transform.GetChild(0).gameObject.AddComponent<MeshRenderer>() as MeshRenderer;
+        mouthAudio = mouthRenderer.gameObject.AddComponent<AudioSource>() as AudioSource;
+
+        feelings = new Dictionary<string, int[]>();
+        feelings.Add("angry",    new int[3] { 0, 1, 11 });
+        feelings.Add("contempt", new int[3] { 7, 8, 12 });
+        feelings.Add("fear",     new int[3] { 2, 10, 2 });
+        feelings.Add("happy",    new int[3] { 5, 7, 10 });
+        feelings.Add("sadness",  new int[3] { 3, 8, 5 });
+        feelings.Add("surprise", new int[3] { 3, 14, 6 });
+        feelings.Add("disgust",  new int[3] { 1, 10, 3 });
+        feelings.Add("neutral",  new int[3] { 3, 4, 0 });
 
         DefaultShader = Shader.Find("Sprites/Default");
         eyesMats = new Material[10];
@@ -52,22 +66,36 @@ public class ChangeFace : MonoBehaviour
         mouthsMats[14] = Resources.Load("Materials/Mouths/surprised", typeof(Material)) as Material;
         mouthsMats[15] = Resources.Load("Materials/Mouths/teeth", typeof(Material)) as Material;
 
-        Skyboxes = new Material[4];
+        Skyboxes = new Material[13];
         Skyboxes[0] = Resources.Load("Materials/Skyboxes/SkyAfterNoon", typeof(Material)) as Material;
         Skyboxes[1] = Resources.Load("Materials/Skyboxes/SkyBrightMorning", typeof(Material)) as Material;
         Skyboxes[2] = Resources.Load("Materials/Skyboxes/SkyMorning", typeof(Material)) as Material;
         Skyboxes[3] = Resources.Load("Materials/Skyboxes/SkySunset", typeof(Material)) as Material;
+
+        Skyboxes[4] = Resources.Load("Materials/Skyboxes/CartoonNight1", typeof(Material)) as Material;
+        Skyboxes[5] = Resources.Load("Materials/Skyboxes/CartoonNight2", typeof(Material)) as Material;
+        Skyboxes[6] = Resources.Load("Materials/Skyboxes/CartoonSunny1", typeof(Material)) as Material;
+        Skyboxes[7] = Resources.Load("Materials/Skyboxes/CartoonSunny2", typeof(Material)) as Material;
+
+        Skyboxes[8] = Resources.Load("Materials/Skyboxes/CloudyCrown_Daybreak", typeof(Material)) as Material;
+        Skyboxes[9] = Resources.Load("Materials/Skyboxes/CloudyCrown_Evening", typeof(Material)) as Material;
+        Skyboxes[10] = Resources.Load("Materials/Skyboxes/CloudyCrown_Midday", typeof(Material)) as Material;
+        Skyboxes[11] = Resources.Load("Materials/Skyboxes/CloudyCrown_Midnight", typeof(Material)) as Material;
+        Skyboxes[12] = Resources.Load("Materials/Skyboxes/CloudyCrown_Sunset", typeof(Material)) as Material;
+
+        mouthSounds = new AudioClip[2];
+        mouthSounds[0] = Resources.Load("Sounds/aaa", typeof(AudioClip)) as AudioClip;
+        mouthSounds[1] = Resources.Load("Sounds/ooo", typeof(AudioClip)) as AudioClip;
 
 
         tabIndex = 0;
         eyesRenderer.material = eyesMats[tabIndex];
         eyesRenderer.material.shader = DefaultShader;
         mouthRenderer.material = mouthsMats[tabIndex];
-
         mouthRenderer.material.shader = DefaultShader;
-
         RenderSettings.skybox = Skyboxes[tabIndex];
     }
+
 
     void Update ()
     {
@@ -79,7 +107,66 @@ public class ChangeFace : MonoBehaviour
 
             RenderSettings.skybox = Skyboxes[tabIndex % Skyboxes.Length];
         }
+
+
+        // Feelings test
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            eyesRenderer.material = eyesMats[feelings["angry"][0]];
+            mouthRenderer.material = mouthsMats[feelings["angry"][1]];
+            RenderSettings.skybox = Skyboxes[feelings["angry"][2]];
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            eyesRenderer.material = eyesMats[feelings["contempt"][0]];
+            mouthRenderer.material = mouthsMats[feelings["contempt"][1]];
+            RenderSettings.skybox = Skyboxes[feelings["contempt"][2]];
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            eyesRenderer.material = eyesMats[feelings["fear"][0]];
+            mouthRenderer.material = mouthsMats[feelings["fear"][1]];
+            RenderSettings.skybox = Skyboxes[feelings["fear"][2]];
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            eyesRenderer.material = eyesMats[feelings["happy"][0]];
+            mouthRenderer.material = mouthsMats[feelings["happy"][1]];
+            RenderSettings.skybox = Skyboxes[feelings["happy"][2]];
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            eyesRenderer.material = eyesMats[feelings["sadness"][0]];
+            mouthRenderer.material = mouthsMats[feelings["sadness"][1]];
+            RenderSettings.skybox = Skyboxes[feelings["sadness"][2]];
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            eyesRenderer.material = eyesMats[feelings["surprise"][0]];
+            mouthRenderer.material = mouthsMats[feelings["surprise"][1]];
+            RenderSettings.skybox = Skyboxes[feelings["surprise"][2]];
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            eyesRenderer.material = eyesMats[feelings["disgust"][0]];
+            mouthRenderer.material = mouthsMats[feelings["disgust"][1]];
+            RenderSettings.skybox = Skyboxes[feelings["disgust"][2]];
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            eyesRenderer.material = eyesMats[feelings["neutral"][0]];
+            mouthRenderer.material = mouthsMats[feelings["neutral"][1]];
+            RenderSettings.skybox = Skyboxes[feelings["neutral"][2]];
+        }
+
+        // voice test
+        if (tabIndex % mouthsMats.Length == 3)
+        {
+            mouthAudio.PlayOneShot(mouthSounds[0], 0.5f);
+        }
+        else if (tabIndex % mouthsMats.Length == 2)
+        {
+            mouthAudio.PlayOneShot(mouthSounds[1], 0.5f);
+        }
     }
-
-
 }

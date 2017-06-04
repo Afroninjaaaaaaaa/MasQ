@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class RotateHead : MonoBehaviour {
 
-    private int rotateOffset = 5;
+    public int rotateOffset;
+    Vector3 newrotation;
 
-	void Update ()
+    void Update ()
     {
-        if (Input.GetKey("left") && gameObject.transform.eulerAngles.y < 220)
+        /*if (Input.GetKey("left") && gameObject.transform.eulerAngles.y < 220)
         {
             gameObject.transform.eulerAngles = new Vector3( gameObject.transform.eulerAngles.x,
                                                             gameObject.transform.eulerAngles.y + rotateOffset,
@@ -21,6 +22,11 @@ public class RotateHead : MonoBehaviour {
                                                             gameObject.transform.eulerAngles.y - rotateOffset,
                                                             gameObject.transform.eulerAngles.z
                                                           );
-        }
+        }*/
+
+
+        newrotation = transform.position - Input.mousePosition / 100;
+        //Debug.Log("Vect x: " + transform.localEulerAngles.x + " | y: " + transform.localEulerAngles.y + " | z: " + transform.localEulerAngles.z);
+        transform.localEulerAngles = newrotation;
     }
 }
