@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +19,8 @@ public class ChangeFace : MonoBehaviour
 
     private int tabIndex;
     Dictionary<string, int[]> feelings;
+    
+    Process myProcess;
 
 
     void Start()
@@ -94,12 +98,52 @@ public class ChangeFace : MonoBehaviour
         mouthRenderer.material = mouthsMats[tabIndex];
         mouthRenderer.material.shader = DefaultShader;
         RenderSettings.skybox = Skyboxes[tabIndex];
+
+        InitFaceDetectionScript();
     }
-
-
+    
     void Update ()
     {
-        if(Input.GetKeyDown("space"))
+        int skyIndex = GetFaceInformation();
+        RenderSettings.skybox = Skyboxes[skyIndex];
+        //SceneTest();
+    }
+    
+    void InitFaceDetectionScript()
+    {
+        string pythonPath = @"C:\WinPython-64bit-3.5.2.3Qt5\python-3.5.2.amd64\python.exe";
+        string myPythonApp = @"U:\rand.py";
+
+        // Create new process start info 
+        ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(pythonPath);
+        myProcessStartInfo.UseShellExecute = false;
+        myProcessStartInfo.RedirectStandardOutput = true;
+
+        // start python app with python script pointer
+        myProcessStartInfo.Arguments = myPythonApp;
+        myProcess = new Process();
+        myProcess.StartInfo = myProcessStartInfo;
+        UnityEngine.Debug.Log("Calling Python script");
+        myProcess.Start();
+    }
+
+    int GetFaceInformation()
+    {
+        StreamReader myStreamReader = myProcess.StandardOutput;
+        String res = myStreamReader.ReadLine();
+
+        int j;
+        if (Int32.TryParse(res, out j))
+            return j;
+        return 0;
+        // wait exit signal from the app we called and then close it. 
+        //myProcess.WaitForExit();
+        //myProcess.Close();
+    }
+
+    void SceneTest()
+    {
+        if (Input.GetKeyDown("space"))
         {
             tabIndex += 1;
             eyesRenderer.material = eyesMats[tabIndex % eyesMats.Length];
@@ -168,5 +212,7 @@ public class ChangeFace : MonoBehaviour
         {
             mouthAudio.PlayOneShot(mouthSounds[1], 0.5f);
         }
+
+        GetFaceInformation();
     }
 }
