@@ -99,14 +99,14 @@ public class ChangeFace : MonoBehaviour
         mouthRenderer.material.shader = DefaultShader;
         RenderSettings.skybox = Skyboxes[tabIndex];
 
-        InitFaceDetectionScript();
+      //  InitFaceDetectionScript();
     }
     
     void Update ()
     {
-        int skyIndex = GetFaceInformation();
-        RenderSettings.skybox = Skyboxes[skyIndex];
-        //SceneTest();
+        //int skyIndex = GetFaceInformation();
+        //RenderSettings.skybox = Skyboxes[skyIndex];
+        SceneTest();
     }
     
     void InitFaceDetectionScript()
@@ -213,6 +213,6 @@ public class ChangeFace : MonoBehaviour
             mouthAudio.PlayOneShot(mouthSounds[1], 0.5f);
         }
 
-        GetFaceInformation();
+        //GetFaceInformation();
     }
 }
