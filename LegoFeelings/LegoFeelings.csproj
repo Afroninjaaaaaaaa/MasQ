@@ -79,9 +79,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ChangeFace.cs" />
-    <Compile Include="Assets\Scripts\GetText.cs" />
     <Compile Include="Assets\Scripts\MoveBody.cs" />
+    <Compile Include="Assets\Scripts\Rotate.cs" />
+    <Compile Include="Assets\Scripts\RotateAround.cs" />
     <Compile Include="Assets\Scripts\RotateHead.cs" />
+    <Compile Include="Assets\Scripts\SetEnvironment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\zOthers\Day-Night Skyboxes\Textures\Readme for Assigning.txt" />

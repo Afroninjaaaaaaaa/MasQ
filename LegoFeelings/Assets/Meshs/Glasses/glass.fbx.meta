@@ -1,0 +1,225 @@
+fileFormatVersion: 2
+guid: c3c21ce7dcb18da419861b42acf7350a
+timeCreated: 1497181955
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: glass:Box001
+    100004: glass:Box002
+    100006: glass:Box003
+    100008: glass:Box004
+    100010: glass:Box006
+    100012: glass:Box007
+    100014: glass:Box008
+    100016: glass:Box009
+    100018: glass:Box010
+    100020: glass:Box011
+    100022: glass:Ellipse001
+    100024: glass:Ellipse002
+    100026: glass:Line001
+    100028: glass:Line002
+    100030: glass:Line004
+    100032: glass:Line005
+    100034: glass:Line006
+    100036: glass:Line007
+    100038: glass:Line008
+    100040: glass:Line010
+    100042: glass:Shape001
+    100044: glass:Sphere001
+    100046: glass:Sphere002
+    100048: glass:Sphere003
+    100050: glass:Sphere004
+    100052: glass:Sphere005
+    100054: glass:Sphere006
+    100056: glass:Tube001
+    100058: glass:Tube002
+    400000: //RootNode
+    400002: glass:Box001
+    400004: glass:Box002
+    400006: glass:Box003
+    400008: glass:Box004
+    400010: glass:Box006
+    400012: glass:Box007
+    400014: glass:Box008
+    400016: glass:Box009
+    400018: glass:Box010
+    400020: glass:Box011
+    400022: glass:Ellipse001
+    400024: glass:Ellipse002
+    400026: glass:Line001
+    400028: glass:Line002
+    400030: glass:Line004
+    400032: glass:Line005
+    400034: glass:Line006
+    400036: glass:Line007
+    400038: glass:Line008
+    400040: glass:Line010
+    400042: glass:Shape001
+    400044: glass:Sphere001
+    400046: glass:Sphere002
+    400048: glass:Sphere003
+    400050: glass:Sphere004
+    400052: glass:Sphere005
+    400054: glass:Sphere006
+    400056: glass:Tube001
+    400058: glass:Tube002
+    2300000: glass:Box001
+    2300002: glass:Box002
+    2300004: glass:Box003
+    2300006: glass:Box004
+    2300008: glass:Box006
+    2300010: glass:Box007
+    2300012: glass:Box008
+    2300014: glass:Box009
+    2300016: glass:Box010
+    2300018: glass:Box011
+    2300020: glass:Ellipse001
+    2300022: glass:Ellipse002
+    2300024: glass:Line001
+    2300026: glass:Line002
+    2300028: glass:Line004
+    2300030: glass:Line005
+    2300032: glass:Line006
+    2300034: glass:Line007
+    2300036: glass:Line008
+    2300038: glass:Line010
+    2300040: glass:Shape001
+    2300042: glass:Sphere001
+    2300044: glass:Sphere002
+    2300046: glass:Sphere003
+    2300048: glass:Sphere004
+    2300050: glass:Sphere005
+    2300052: glass:Sphere006
+    2300054: glass:Tube001
+    2300056: glass:Tube002
+    3300000: glass:Box001
+    3300002: glass:Box002
+    3300004: glass:Box003
+    3300006: glass:Box004
+    3300008: glass:Box006
+    3300010: glass:Box007
+    3300012: glass:Box008
+    3300014: glass:Box009
+    3300016: glass:Box010
+    3300018: glass:Box011
+    3300020: glass:Ellipse001
+    3300022: glass:Ellipse002
+    3300024: glass:Line001
+    3300026: glass:Line002
+    3300028: glass:Line004
+    3300030: glass:Line005
+    3300032: glass:Line006
+    3300034: glass:Line007
+    3300036: glass:Line008
+    3300038: glass:Line010
+    3300040: glass:Shape001
+    3300042: glass:Sphere001
+    3300044: glass:Sphere002
+    3300046: glass:Sphere003
+    3300048: glass:Sphere004
+    3300050: glass:Sphere005
+    3300052: glass:Sphere006
+    3300054: glass:Tube001
+    3300056: glass:Tube002
+    4300000: glass:Box001
+    4300002: glass:Shape001
+    4300004: glass:Box004
+    4300006: glass:Sphere002
+    4300008: glass:Sphere003
+    4300010: glass:Box007
+    4300012: glass:Sphere004
+    4300014: glass:Sphere005
+    4300016: glass:Box011
+    4300018: glass:Line005
+    4300020: glass:Box009
+    4300022: glass:Ellipse002
+    4300024: glass:Line006
+    4300026: glass:Sphere006
+    4300028: glass:Box010
+    4300030: glass:Ellipse001
+    4300032: glass:Line001
+    4300034: glass:Sphere001
+    4300036: glass:Box003
+    4300038: glass:Line002
+    4300040: glass:Box002
+    4300042: glass:Tube001
+    4300044: glass:Line010
+    4300046: glass:Line004
+    4300048: glass:Box006
+    4300050: glass:Tube002
+    4300052: glass:Box008
+    4300054: glass:Line007
+    4300056: glass:Line008
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

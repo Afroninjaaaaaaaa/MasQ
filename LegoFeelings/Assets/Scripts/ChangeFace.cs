@@ -19,6 +19,7 @@ public class ChangeFace : MonoBehaviour
 
     private int tabIndex;
     Dictionary<string, int[]> feelings;
+    public static string currFeeling;
     
     Process myProcess;
 
@@ -32,12 +33,13 @@ public class ChangeFace : MonoBehaviour
         feelings = new Dictionary<string, int[]>();
         feelings.Add("angry",    new int[3] { 0, 1, 11 });
         feelings.Add("contempt", new int[3] { 7, 8, 12 });
+        feelings.Add("disgust", new int[3] { 1, 10, 3 });
         feelings.Add("fear",     new int[3] { 2, 10, 2 });
         feelings.Add("happy",    new int[3] { 5, 7, 10 });
+        feelings.Add("neutral", new int[3] { 3, 4, 0 });
         feelings.Add("sadness",  new int[3] { 3, 8, 5 });
         feelings.Add("surprise", new int[3] { 3, 14, 6 });
-        feelings.Add("disgust",  new int[3] { 1, 10, 3 });
-        feelings.Add("neutral",  new int[3] { 3, 4, 0 });
+        currFeeling = null;
 
         DefaultShader = Shader.Find("Sprites/Default");
         eyesMats = new Material[10];
@@ -156,48 +158,56 @@ public class ChangeFace : MonoBehaviour
         // Feelings test
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            currFeeling = "angry";
             eyesRenderer.material = eyesMats[feelings["angry"][0]];
             mouthRenderer.material = mouthsMats[feelings["angry"][1]];
             RenderSettings.skybox = Skyboxes[feelings["angry"][2]];
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
+            currFeeling = "contempt";
             eyesRenderer.material = eyesMats[feelings["contempt"][0]];
             mouthRenderer.material = mouthsMats[feelings["contempt"][1]];
             RenderSettings.skybox = Skyboxes[feelings["contempt"][2]];
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
+            currFeeling = "fear";
             eyesRenderer.material = eyesMats[feelings["fear"][0]];
             mouthRenderer.material = mouthsMats[feelings["fear"][1]];
             RenderSettings.skybox = Skyboxes[feelings["fear"][2]];
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
+            currFeeling = "happy";
             eyesRenderer.material = eyesMats[feelings["happy"][0]];
             mouthRenderer.material = mouthsMats[feelings["happy"][1]];
             RenderSettings.skybox = Skyboxes[feelings["happy"][2]];
         }
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
+            currFeeling = "sadness";
             eyesRenderer.material = eyesMats[feelings["sadness"][0]];
             mouthRenderer.material = mouthsMats[feelings["sadness"][1]];
             RenderSettings.skybox = Skyboxes[feelings["sadness"][2]];
         }
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
+            currFeeling = "surprise";
             eyesRenderer.material = eyesMats[feelings["surprise"][0]];
             mouthRenderer.material = mouthsMats[feelings["surprise"][1]];
             RenderSettings.skybox = Skyboxes[feelings["surprise"][2]];
         }
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
+            currFeeling = "disgust";
             eyesRenderer.material = eyesMats[feelings["disgust"][0]];
             mouthRenderer.material = mouthsMats[feelings["disgust"][1]];
             RenderSettings.skybox = Skyboxes[feelings["disgust"][2]];
         }
         if (Input.GetKeyDown(KeyCode.Alpha8))
         {
+            currFeeling = "neutral";
             eyesRenderer.material = eyesMats[feelings["neutral"][0]];
             mouthRenderer.material = mouthsMats[feelings["neutral"][1]];
             RenderSettings.skybox = Skyboxes[feelings["neutral"][2]];
