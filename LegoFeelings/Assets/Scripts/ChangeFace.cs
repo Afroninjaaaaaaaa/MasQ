@@ -12,11 +12,12 @@ public class ChangeFace : MonoBehaviour
     Material[] mouthsMats;
     Material[] Skyboxes;
     AudioClip[] mouthSounds;
+    AudioClip[] bgMusics;
     Shader DefaultShader;
     MeshRenderer eyesRenderer;
     MeshRenderer mouthRenderer;
     AudioSource mouthAudio;
-
+    AudioSource bgAudio;
     private int tabIndex;
     Dictionary<string, int[]> feelings;
     public static string currFeeling;
@@ -29,16 +30,17 @@ public class ChangeFace : MonoBehaviour
         eyesRenderer = gameObject.transform.GetChild(1).gameObject.AddComponent<MeshRenderer>() as MeshRenderer;
         mouthRenderer = gameObject.transform.GetChild(0).gameObject.AddComponent<MeshRenderer>() as MeshRenderer;
         mouthAudio = mouthRenderer.gameObject.AddComponent<AudioSource>() as AudioSource;
+        bgAudio = gameObject.AddComponent<AudioSource>() as AudioSource;
 
         feelings = new Dictionary<string, int[]>();
-        feelings.Add("angry",    new int[3] { 0, 1, 11 });
-        feelings.Add("contempt", new int[3] { 7, 8, 12 });
-        feelings.Add("disgust", new int[3] { 1, 10, 3 });
-        feelings.Add("fear",     new int[3] { 2, 10, 2 });
-        feelings.Add("happy",    new int[3] { 5, 7, 10 });
-        feelings.Add("neutral", new int[3] { 3, 4, 0 });
-        feelings.Add("sadness",  new int[3] { 3, 8, 5 });
-        feelings.Add("surprise", new int[3] { 3, 14, 6 });
+        feelings.Add("angry",    new int[4] { 0, 1, 11, 0 });
+        feelings.Add("contempt", new int[4] { 7, 8, 12, 1 });
+        feelings.Add("disgust", new int[4] { 1, 10, 3, 2 });
+        feelings.Add("fear",     new int[4] { 2, 10, 2, 3 });
+        feelings.Add("happy",    new int[4] { 5, 7, 10, 4 });
+        feelings.Add("neutral", new int[4] { 3, 4, 0, 5 });
+        feelings.Add("sadness",  new int[4] { 3, 8, 5, 6 });
+        feelings.Add("surprise", new int[4] { 3, 14, 6, 7 });
         currFeeling = null;
 
         DefaultShader = Shader.Find("Sprites/Default");
@@ -88,6 +90,17 @@ public class ChangeFace : MonoBehaviour
         Skyboxes[10] = Resources.Load("Materials/Skyboxes/CloudyCrown_Midday", typeof(Material)) as Material;
         Skyboxes[11] = Resources.Load("Materials/Skyboxes/CloudyCrown_Midnight", typeof(Material)) as Material;
         Skyboxes[12] = Resources.Load("Materials/Skyboxes/CloudyCrown_Sunset", typeof(Material)) as Material;
+
+
+        bgMusics = new AudioClip[8];
+        bgMusics[0] = Resources.Load("Musics/angry", typeof(AudioClip)) as AudioClip;
+        bgMusics[1] = Resources.Load("Musics/contempt", typeof(AudioClip)) as AudioClip;
+        bgMusics[2] = Resources.Load("Musics/disgust", typeof(AudioClip)) as AudioClip;
+        bgMusics[3] = Resources.Load("Musics/fear", typeof(AudioClip)) as AudioClip;
+        bgMusics[4] = Resources.Load("Musics/happy", typeof(AudioClip)) as AudioClip;
+        bgMusics[5] = Resources.Load("Musics/neutral", typeof(AudioClip)) as AudioClip;
+        bgMusics[6] = Resources.Load("Musics/sadness", typeof(AudioClip)) as AudioClip;
+        bgMusics[7] = Resources.Load("Musics/surprise", typeof(AudioClip)) as AudioClip;
 
         mouthSounds = new AudioClip[2];
         mouthSounds[0] = Resources.Load("Sounds/aaa", typeof(AudioClip)) as AudioClip;
@@ -162,6 +175,8 @@ public class ChangeFace : MonoBehaviour
             eyesRenderer.material = eyesMats[feelings["angry"][0]];
             mouthRenderer.material = mouthsMats[feelings["angry"][1]];
             RenderSettings.skybox = Skyboxes[feelings["angry"][2]];
+            bgAudio.Stop();
+            bgAudio.PlayOneShot(bgMusics[feelings["angry"][3]], 0.5f);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
@@ -169,6 +184,8 @@ public class ChangeFace : MonoBehaviour
             eyesRenderer.material = eyesMats[feelings["contempt"][0]];
             mouthRenderer.material = mouthsMats[feelings["contempt"][1]];
             RenderSettings.skybox = Skyboxes[feelings["contempt"][2]];
+            bgAudio.Stop();
+            bgAudio.PlayOneShot(bgMusics[feelings["contempt"][3]], 0.5f);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
@@ -176,6 +193,8 @@ public class ChangeFace : MonoBehaviour
             eyesRenderer.material = eyesMats[feelings["fear"][0]];
             mouthRenderer.material = mouthsMats[feelings["fear"][1]];
             RenderSettings.skybox = Skyboxes[feelings["fear"][2]];
+            bgAudio.Stop();
+            bgAudio.PlayOneShot(bgMusics[feelings["fear"][3]], 0.5f);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
@@ -183,6 +202,8 @@ public class ChangeFace : MonoBehaviour
             eyesRenderer.material = eyesMats[feelings["happy"][0]];
             mouthRenderer.material = mouthsMats[feelings["happy"][1]];
             RenderSettings.skybox = Skyboxes[feelings["happy"][2]];
+            bgAudio.Stop();
+            bgAudio.PlayOneShot(bgMusics[feelings["happy"][3]], 0.5f);
         }
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
@@ -190,6 +211,8 @@ public class ChangeFace : MonoBehaviour
             eyesRenderer.material = eyesMats[feelings["sadness"][0]];
             mouthRenderer.material = mouthsMats[feelings["sadness"][1]];
             RenderSettings.skybox = Skyboxes[feelings["sadness"][2]];
+            bgAudio.Stop();
+            bgAudio.PlayOneShot(bgMusics[feelings["sadness"][3]], 0.5f);
         }
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
@@ -197,6 +220,8 @@ public class ChangeFace : MonoBehaviour
             eyesRenderer.material = eyesMats[feelings["surprise"][0]];
             mouthRenderer.material = mouthsMats[feelings["surprise"][1]];
             RenderSettings.skybox = Skyboxes[feelings["surprise"][2]];
+            bgAudio.Stop();
+            bgAudio.PlayOneShot(bgMusics[feelings["surprise"][3]], 0.5f);
         }
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
@@ -204,6 +229,8 @@ public class ChangeFace : MonoBehaviour
             eyesRenderer.material = eyesMats[feelings["disgust"][0]];
             mouthRenderer.material = mouthsMats[feelings["disgust"][1]];
             RenderSettings.skybox = Skyboxes[feelings["disgust"][2]];
+            bgAudio.Stop();
+            bgAudio.PlayOneShot(bgMusics[feelings["disgust"][3]], 0.5f);
         }
         if (Input.GetKeyDown(KeyCode.Alpha8))
         {
@@ -211,6 +238,8 @@ public class ChangeFace : MonoBehaviour
             eyesRenderer.material = eyesMats[feelings["neutral"][0]];
             mouthRenderer.material = mouthsMats[feelings["neutral"][1]];
             RenderSettings.skybox = Skyboxes[feelings["neutral"][2]];
+            bgAudio.Stop();
+            bgAudio.PlayOneShot(bgMusics[feelings["neutral"][3]], 0.5f);
         }
 
         // voice test

@@ -71,19 +71,18 @@ public class SetEnvironment : MonoBehaviour {
         objectsFear[10] = Resources.Load("Prefabs/fear/Spider", typeof(GameObject)) as GameObject;
         objectsFear[11] = Resources.Load("Prefabs/fear/Spider", typeof(GameObject)) as GameObject;
 
-        objectsHappy = new GameObject[12];
+        objectsHappy = new GameObject[11];
         objectsHappy[0] = Resources.Load("Prefabs/happy/Heart", typeof(GameObject)) as GameObject;
         objectsHappy[1] = Resources.Load("Prefabs/happy/Heart", typeof(GameObject)) as GameObject;
         objectsHappy[2] = Resources.Load("Prefabs/happy/Heart", typeof(GameObject)) as GameObject;
         objectsHappy[3] = Resources.Load("Prefabs/happy/Mill", typeof(GameObject)) as GameObject;
         objectsHappy[4] = Resources.Load("Prefabs/happy/Mill", typeof(GameObject)) as GameObject;
-        objectsHappy[5] = Resources.Load("Prefabs/happy/Mill", typeof(GameObject)) as GameObject;
+        objectsHappy[5] = Resources.Load("Prefabs/happy/Pokeball", typeof(GameObject)) as GameObject;
         objectsHappy[6] = Resources.Load("Prefabs/happy/Pokeball", typeof(GameObject)) as GameObject;
         objectsHappy[7] = Resources.Load("Prefabs/happy/Pokeball", typeof(GameObject)) as GameObject;
-        objectsHappy[8] = Resources.Load("Prefabs/happy/Pokeball", typeof(GameObject)) as GameObject;
+        objectsHappy[8] = Resources.Load("Prefabs/happy/Unicorn", typeof(GameObject)) as GameObject;
         objectsHappy[9] = Resources.Load("Prefabs/happy/Unicorn", typeof(GameObject)) as GameObject;
         objectsHappy[10] = Resources.Load("Prefabs/happy/Unicorn", typeof(GameObject)) as GameObject;
-        objectsHappy[11] = Resources.Load("Prefabs/happy/Unicorn", typeof(GameObject)) as GameObject;
 
         objectsNeutral = new GameObject[0];
         objectsSadness = new GameObject[0];
@@ -126,6 +125,7 @@ public class SetEnvironment : MonoBehaviour {
         {
             Destroy(item);
         }
+        currObjects.Clear();
         foreach (GameObject item in environnment)
         {
             deltaPosition = new Vector3(Random.Range(-3.0f, 3.0f), Random.Range(-3.0f, 3.0f), Random.Range(-3.0f, 3.0f));
