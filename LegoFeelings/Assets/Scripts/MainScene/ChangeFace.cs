@@ -105,50 +105,36 @@ public class ChangeFace : MonoBehaviour
         mouthSounds = new AudioClip[2];
         mouthSounds[0] = Resources.Load("Sounds/aaa", typeof(AudioClip)) as AudioClip;
         mouthSounds[1] = Resources.Load("Sounds/ooo", typeof(AudioClip)) as AudioClip;
-
-
+        
         tabIndex = 0;
         eyesRenderer.material = eyesMats[tabIndex];
         eyesRenderer.material.shader = DefaultShader;
         mouthRenderer.material = mouthsMats[tabIndex];
         mouthRenderer.material.shader = DefaultShader;
         RenderSettings.skybox = Skyboxes[tabIndex];
-
-      //  InitFaceDetectionScript();
     }
     
     void Update ()
     {
-        //int skyIndex = GetFaceInformation();
-        //RenderSettings.skybox = Skyboxes[skyIndex];
-        SceneTest();
-    }
-    
-    void InitFaceDetectionScript()
-    {
-        string pythonPath = @"C:\WinPython-64bit-3.5.2.3Qt5\python-3.5.2.amd64\python.exe";
-        string myPythonApp = @"U:\rand.py";
-
-        // Create new process start info 
-        ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(pythonPath);
-        myProcessStartInfo.UseShellExecute = false;
-        myProcessStartInfo.RedirectStandardOutput = true;
-
-        // start python app with python script pointer
-        myProcessStartInfo.Arguments = myPythonApp;
-        myProcess = new Process();
-        myProcess.StartInfo = myProcessStartInfo;
-        UnityEngine.Debug.Log("Calling Python script");
-        myProcess.Start();
+        int emoIndex = GetFaceInformation();
+        ProcessFaceEmotions(emoIndex);
+        //SceneTest();
     }
 
     int GetFaceInformation()
     {
-        StreamReader myStreamReader = myProcess.StandardOutput;
-        String res = myStreamReader.ReadLine();
+        string m = "";
+        string FilePath = "/home/zhoux/workspace/EmotionDetection/txt.txt";
+        StreamReader r = new StreamReader(FilePath);
+        while (r.EndOfStream == false)
+        {
+            m = r.ReadLine();
+        }
+
+        r.Close();
 
         int j;
-        if (Int32.TryParse(res, out j))
+        if (Int32.TryParse(m, out j))
             return j;
         return 0;
         // wait exit signal from the app we called and then close it. 
@@ -166,8 +152,7 @@ public class ChangeFace : MonoBehaviour
 
             RenderSettings.skybox = Skyboxes[tabIndex % Skyboxes.Length];
         }
-
-
+        
         // Feelings test
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -241,17 +226,82 @@ public class ChangeFace : MonoBehaviour
             bgAudio.Stop();
             bgAudio.PlayOneShot(bgMusics[feelings["neutral"][3]], 0.5f);
         }
+    }
 
-        // voice test
-        if (tabIndex % mouthsMats.Length == 3)
+    void ProcessFaceEmotions(int emoIndex)
+    {        
+        // Feelings test
+        if (emoIndex == 0)
         {
-            mouthAudio.PlayOneShot(mouthSounds[0], 0.5f);
+            currFeeling = "angry";
+            eyesRenderer.material = eyesMats[feelings["angry"][0]];
+            mouthRenderer.material = mouthsMats[feelings["angry"][1]];
+            RenderSettings.skybox = Skyboxes[feelings["angry"][2]];
+            bgAudio.Stop();
+            bgAudio.PlayOneShot(bgMusics[feelings["angry"][3]], 0.5f);
         }
-        else if (tabIndex % mouthsMats.Length == 2)
+        if (emoIndex == 1)
         {
-            mouthAudio.PlayOneShot(mouthSounds[1], 0.5f);
+            currFeeling = "contempt";
+            eyesRenderer.material = eyesMats[feelings["contempt"][0]];
+            mouthRenderer.material = mouthsMats[feelings["contempt"][1]];
+            RenderSettings.skybox = Skyboxes[feelings["contempt"][2]];
+            bgAudio.Stop();
+            bgAudio.PlayOneShot(bgMusics[feelings["contempt"][3]], 0.5f);
         }
-
-        //GetFaceInformation();
+        if (emoIndex == 2)
+        {
+            currFeeling = "disgust";
+            eyesRenderer.material = eyesMats[feelings["disgust"][0]];
+            mouthRenderer.material = mouthsMats[feelings["disgust"][1]];
+            RenderSettings.skybox = Skyboxes[feelings["disgust"][2]];
+            bgAudio.Stop();
+            bgAudio.PlayOneShot(bgMusics[feelings["disgust"][3]], 0.5f);
+        }
+        if (emoIndex == 3)
+        {
+            currFeeling = "fear";
+            eyesRenderer.material = eyesMats[feelings["fear"][0]];
+            mouthRenderer.material = mouthsMats[feelings["fear"][1]];
+            RenderSettings.skybox = Skyboxes[feelings["fear"][2]];
+            bgAudio.Stop();
+            bgAudio.PlayOneShot(bgMusics[feelings["fear"][3]], 0.5f);
+        }
+        if (emoIndex == 4)
+        {
+            currFeeling = "happy";
+            eyesRenderer.material = eyesMats[feelings["happy"][0]];
+            mouthRenderer.material = mouthsMats[feelings["happy"][1]];
+            RenderSettings.skybox = Skyboxes[feelings["happy"][2]];
+            bgAudio.Stop();
+            bgAudio.PlayOneShot(bgMusics[feelings["happy"][3]], 0.5f);
+        }
+        if (emoIndex == 5)
+        {
+            currFeeling = "neutral";
+            eyesRenderer.material = eyesMats[feelings["neutral"][0]];
+            mouthRenderer.material = mouthsMats[feelings["neutral"][1]];
+            RenderSettings.skybox = Skyboxes[feelings["neutral"][2]];
+            bgAudio.Stop();
+            bgAudio.PlayOneShot(bgMusics[feelings["neutral"][3]], 0.5f);
+        }
+        if (emoIndex == 6)
+        {
+            currFeeling = "sadness";
+            eyesRenderer.material = eyesMats[feelings["sadness"][0]];
+            mouthRenderer.material = mouthsMats[feelings["sadness"][1]];
+            RenderSettings.skybox = Skyboxes[feelings["sadness"][2]];
+            bgAudio.Stop();
+            bgAudio.PlayOneShot(bgMusics[feelings["sadness"][3]], 0.5f);
+        }
+        if (emoIndex == 7)
+        {
+            currFeeling = "surprise";
+            eyesRenderer.material = eyesMats[feelings["surprise"][0]];
+            mouthRenderer.material = mouthsMats[feelings["surprise"][1]];
+            RenderSettings.skybox = Skyboxes[feelings["surprise"][2]];
+            bgAudio.Stop();
+            bgAudio.PlayOneShot(bgMusics[feelings["surprise"][3]], 0.5f);
+        }
     }
 }
